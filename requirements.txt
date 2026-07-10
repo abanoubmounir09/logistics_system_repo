@@ -1,0 +1,1 @@
+# frappe is installed by bench, no extra python deps required for this app

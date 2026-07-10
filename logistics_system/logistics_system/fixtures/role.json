@@ -1,0 +1,20 @@
+[
+ {
+  "doctype": "Role",
+  "name": "Logistics Manager",
+  "role_name": "Logistics Manager",
+  "desk_access": 1
+ },
+ {
+  "doctype": "Role",
+  "name": "Logistics Dispatcher",
+  "role_name": "Logistics Dispatcher",
+  "desk_access": 1
+ },
+ {
+  "doctype": "Role",
+  "name": "Driver",
+  "role_name": "Driver",
+  "desk_access": 1
+ }
+]
