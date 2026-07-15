@@ -28,10 +28,6 @@ class LogisticsDeliveryRun(Document):
 	#logistics_system_repo.logistics_system_repo.doctype.logistics_delivery_run.logistics_delivery_run.py
 	@frappe.whitelist()
 	def build_run(self, driver: str, order_names: list | None = None):
-		# print("\n"*3)
-		# print('call build run')
-		# print("\n"*3)
-		# raise "test"
 		"""
 		Assign a set of Open orders to a driver as an ordered list of stops.
 		If order_names is not provided, the oldest Open orders (by priority,
@@ -184,8 +180,8 @@ class LogisticsDeliveryRun(Document):
 	# 3. Mark Stop as Delivered / Failed
 	# ------------------------------------------------------------------ #
 	@frappe.whitelist()
-	def mark_stop_delivered(self, related_order: str):
-		stop = self._get_stop(related_order)
+	def mark_stop_delivered(self, stop_name: str):
+		stop = self._get_stop(stop_name)
 		self._validate_run_en_route()
 		self._validate_stop_actionable(stop)
 
@@ -202,11 +198,11 @@ class LogisticsDeliveryRun(Document):
 		return self
 
 	@frappe.whitelist()
-	def mark_stop_failed(self, related_order: str, failed_reason: str):
+	def mark_stop_failed(self, stop_name: str, failed_reason: str):
 		if not failed_reason or not failed_reason.strip():
 			frappe.throw(_("Failed Reason is required to mark a stop as Failed."))
 
-		stop = self._get_stop(related_order)
+		stop = self._get_stop(stop_name)
 		self._validate_run_en_route()
 		self._validate_stop_actionable(stop)
 
